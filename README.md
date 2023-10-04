@@ -79,21 +79,19 @@ Pour exécuter cette application localement, suivez ces étapes :
 
 - Installez les dépendances Python :
   ```bash
-  pip install -r requirements.txt
+   pip install -r requirements.txt
 
 - Appliquez les migrations de base de données :
-
 
    ```bash
     python manage.py migrate
 
 - Exécutez le serveur de développement :
-  ```bash
-   python manage.py runserver
+   ```bash
+    python manage.py runserver
 
 Accédez à l'application dans votre navigateur à l'adresse 
 http://localhost:8000/
-
 
 Structure du Code
 * models.py : Définition des modèles de données Django, y compris le modèle Model3d, Badge, et UserBadge.
@@ -104,12 +102,42 @@ Structure du Code
 Tests Unitaires
 Nous avons inclus des tests unitaires pour chaque badge afin de garantir que les badges sont attribués correctement en fonction des actions de l'utilisateur. Vous pouvez exécuter les tests en utilisant la commande suivante :
 
-```bash
-   python manage.py test
+   ```bash
+    python manage.py test
 
 
 
+API
 
+Ce projet contient une API view appelée `UserBadgeAPIView` qui permet de récupérer la liste des badges associés à un utilisateur spécifique.
+
+## Fonctionnalités
+
+La classe `UserBadgeAPIView` offre une seule méthode HTTP GET pour obtenir la liste des badges d'un utilisateur donné.
+
+### Endpoint
+
+- `GET /api/userbadges/<int:user_id>/`
+
+### Paramètres de requête
+
+- `user_id` (int) : L'ID de l'utilisateur pour lequel vous souhaitez récupérer les badges.
+
+### Réponse
+
+L'API renvoie une réponse JSON contenant la liste des noms de badges associés à l'utilisateur spécifié.
+
+Exemple de réponse JSON :
+
+```json
+["Badge1", "Badge2", "Badge3"]
+
+
+- Exemple d'utilisation avec curl :
+    ```bash
+      curl -X GET http://votre-domaine.com/api/userbadges/123/
+
+Remplacez votre-domaine.com par l'URL de votre application et 123 par l'ID de l'utilisateur que vous souhaitez interroger.
 
 
 
